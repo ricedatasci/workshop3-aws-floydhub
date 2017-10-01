@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.model_selection import StratifiedShuffleSplit
 from keras.callbacks import ModelCheckpoint
 from keras.utils import to_categorical
-from plotter_callback import Plotter
+# from plotter_callback import Plotter
 
 import smartphone6 as sm6
 from models import naive as model_func
@@ -38,10 +38,10 @@ if __name__ == "__main__":
     best_model = ModelCheckpoint(MODEL_FILE, monitor='val_acc', mode='max', verbose=1,
                                  save_best_only=True, save_weights_only=True)
     # These will plot the loss and accuracy during training
-    acc_plotter = Plotter(monitor='acc', scale='linear')
-    loss_plotter = Plotter(monitor='loss', scale='log')
+#     acc_plotter = Plotter(monitor='acc', scale='linear')
+#     loss_plotter = Plotter(monitor='loss', scale='log')
     # Set up the callback
-    callbacks = [best_model, acc_plotter, loss_plotter]
+    callbacks = [best_model] # , acc_plotter, loss_plotter]
 
     # initialize and train the model
     model = model_func(xtr.shape[1], hidden=HIDDEN)
